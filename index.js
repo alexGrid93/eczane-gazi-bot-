@@ -1,8 +1,10 @@
 import { Telegraf } from "telegraf";
 import axios from "axios";
 import * as cheerio from "cheerio";
+import "dotenv/config";
 
-const bot = new Telegraf("5921140574:AAFZEjU7yqouhpzaCfHSWL6H50_i9XGtAzY");
+const token = process.env.BOT_TOKEN;
+const bot = new Telegraf(token);
 
 const getInfo = async () => {
   const html = await (
@@ -19,20 +21,22 @@ const getInfo = async () => {
     url: "https://www.antalyaeo.org.tr/tr/nobetci-eczaneler",
   };
 
-  map.telephone = $('div.nobetciler:has(span:contains("Aksu")) a:first')
+  map.telephone = $('div.nobetciler:has(span:contains("Gazipaşa")) a:first')
     .attr("href")
     .replace(/[^0-9 | ' ']/gi, "")
     .trim();
 
-  map.title = $('div.nobetciler:has(span:contains("Aksu")) a:first')
+  map.title = $('div.nobetciler:has(span:contains("Gazipaşa")) a:first')
     .text()
     .trim();
 
-  map.adress = $('div.nobetciler:has(span:contains("Aksu")) a:nth(2)')
+  map.adress = $('div.nobetciler:has(span:contains("Gazipaşa")) a:nth(2)')
     .text()
     .trim();
 
-  map.coordinatesUrl = $('div.nobetciler:has(span:contains("Aksu")) a:nth(2)')
+  map.coordinatesUrl = $(
+    'div.nobetciler:has(span:contains("Gazipaşa")) a:nth(2)'
+  )
     .attr("href")
     .trim();
 
@@ -44,7 +48,7 @@ bot.hears("/аптека", async (ctx) => {
 
   const speech =
     "Merhaba! Şu anda çalışıyor musun? (Здравствуйте, вы сейчас работаете?)";
-    
+
   const translate = "Мерхаба! Шу анда чаляшыор мусун?";
 
   const extraInfo =
