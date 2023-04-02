@@ -1,10 +1,8 @@
 import { Telegraf } from "telegraf";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import "dotenv/config";
 
-const token = process.env.BOT_TOKEN;
-const bot = new Telegraf(token);
+const bot = new Telegraf("5921140574:AAFZEjU7yqouhpzaCfHSWL6H50_i9XGtAzY");
 
 const getInfo = async () => {
   const html = await (
