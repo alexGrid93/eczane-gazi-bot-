@@ -2,7 +2,7 @@ import { Telegraf } from "telegraf";
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-const bot = new Telegraf("5921140574:AAFZEjU7yqouhpzaCfHSWL6H50_i9XGtAzY");
+const bot = new Telegraf("5921140574:AAFfuKLKdnTVvk59lE9pDC_73hCKYUOnTTU");
 
 const getInfo = async () => {
   const html = await (
